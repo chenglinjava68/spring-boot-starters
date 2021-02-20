@@ -6,7 +6,28 @@
 
     <groupId>com.zsx</groupId>
     <artifactId>spring-boot-starters</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <modules>
+        <module>common-spring-boot-starter</module>
+        <module>demo-center</module>
+    </modules>
 
 
+    <repositories>
+        <repository>
+            <id>aliyun-repos</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <developers>
+        <developer>
+            <name>zhushuxian</name>
+            <email>zhushuxian12@qq.com</email>
+        </developer>
+    </developers>
 </project>
