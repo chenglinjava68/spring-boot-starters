@@ -10,19 +10,28 @@
     <version>1.0.0</version>
     <modules>
         <module>common-spring-boot-starter</module>
-        <module>demo-project</module>
         <module>dynamic-datasource-spring-boot-starter</module>
+        <module>demo-project</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
+        <!--<springboot.version>2.4.3</springboot.version>-->
     </properties>
 
     <dependencies>
 
     </dependencies>
     <dependencyManagement>
-
+       <!-- <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>-->
     </dependencyManagement>
 
     <build>

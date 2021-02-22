@@ -4,3 +4,6 @@
 *.iml
 target/
 .gitattributes
+.mvn
+mvnw
+mvnw.cmd
