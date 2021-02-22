@@ -1,1 +1,33 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /demo
+  undertow:
+    threads:
+      io: 4 # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程 不要设置过大，如果过大，启动项目会报错：打开文件数过多
+      worker: 32 # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载 默认值是IO线程数*8
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    buffer-size: 1024 # 每块buffer的空间大小,越小的空间被利用越充分
+    direct-buffers: true # 是否分配的直接内存
 
+spring:
+  datasource:
+    druid:
+      stat-view-servlet:
+        enabled: true
+        loginUsername: admin
+        loginPassword: 123456
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      datasource:
+        master:
+          url: jdbc:mysql://172.16.16.20:5506/demo?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
+          username: demo
+          password: 123456
+          driver-class-name: com.mysql.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
+        slave_1:
+          url: jdbc:mysql://172.16.16.20:5506/demo2?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
+          username: demo
+          password: 123456
+          driver-class-name: com.mysql.jdbc.Driver
