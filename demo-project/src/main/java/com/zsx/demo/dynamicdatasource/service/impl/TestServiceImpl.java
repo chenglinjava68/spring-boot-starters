@@ -1,6 +1,8 @@
 package com.zsx.demo.dynamicdatasource.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zsx.demo.dynamicdatasource.dao.TestDao;
 import com.zsx.demo.dynamicdatasource.dao.UserMapper;
 import com.zsx.demo.dynamicdatasource.model.User;
@@ -35,6 +37,7 @@ public class TestServiceImpl implements TestService {
         userList.forEach(System.out::println);
         System.out.println("hello:"+name);
         userService.getList();
+
         return null;
     }
 
@@ -44,6 +47,10 @@ public class TestServiceImpl implements TestService {
         List<User> userList = userMapper.selectList(null);
         userList.forEach(System.out::println);
         System.out.println("hello:"+name);
+
+        Page<User> page = new Page<>(1,2);
+        IPage<User> data = userMapper.selectPage(page,null);
+        data.getRecords().forEach(System.out::println);
         return null;
     }
 }
