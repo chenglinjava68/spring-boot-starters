@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.open.capacity.ribbon.RibbonDiscoveryRuleAutoConfiguration
+com.zsx.ribbon.RibbonDiscoveryRuleAutoConfiguration

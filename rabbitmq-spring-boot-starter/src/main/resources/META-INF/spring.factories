@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.open.capacity.rabbitmq.config.RabbitMQAutoConfigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zsx.rabbitmq.config.RabbitMQAutoConfigure

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.open.capacity.datasource.DataSourceAutoConfig
+com.zsx.datasource.DataSourceAutoConfig

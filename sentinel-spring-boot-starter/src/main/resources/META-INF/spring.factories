@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.open.capacity.sentinel.SentinelAutoConfig
+com.zsx.sentinel.SentinelAutoConfig
