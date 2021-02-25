@@ -9,29 +9,129 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
+        <!-- 关系型数据库配置-->
+        <module>db-spring-boot-starter</module>
+        <!-- 非关系型数据库配置-->
+        <module>redis-spring-boot-starter</module>
+        <!-- 日志统一配置 -->
+        <module>log-spring-boot-starter</module>
+        <!-- 公共实体类配置 -->
         <module>common-spring-boot-starter</module>
+        <!-- API文档配置 -->
+        <module>swagger-spring-boot-starter</module>
+        <!-- 资源服务器配置 -->
+        <module>uaa-client-spring-boot-starter</module>
+        <!-- 认证服务器配置 -->
+        <module>uaa-server-spring-boot-starter</module>
+        <!-- mq -->
+        <module>rabbitmq-spring-boot-starter</module>
+        <!-- 自定义负载均衡策略-->
+        <module>ribbon-spring-boot-starter</module>
+        <!-- 熔断限流组件  -->
+        <module>sentinel-spring-boot-starter</module>
+
         <module>dynamic-datasource-spring-boot-starter</module>
         <module>demo-project</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
-        <!--<springboot.version>2.4.3</springboot.version>-->
+        <core.version>1.0.0</core.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
+        <spring-platform.version>2.0.8.RELEASE</spring-platform.version>
+        <spring-cloud-dependencies.version>2020.0.1</spring-cloud-dependencies.version>
+        <jasypt.version>1.14</jasypt.version>
+        <hutool.version>5.1.0</hutool.version>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
-       <!-- <dependencies>
+        <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-        </dependencies>-->
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2020.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 公共实体类模块 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>common-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <!-- 关系型和非关系型数据库配置 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>db-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <!-- 非关系型数据库配置 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>redis-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <!-- 日志配置 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>log-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
+            <!-- 资源服务 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>uaa-client-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
+            <!-- 资源服务 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>uaa-server-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <!-- API测试文档 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+            <!-- 自定义路由策略 -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>ribbon-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+
+            <!-- 熔断限流组件  -->
+            <dependency>
+                <groupId>com.zsx</groupId>
+                <artifactId>sentinel-spring-boot-starter</artifactId>
+                <version>${core.version}</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <build>
