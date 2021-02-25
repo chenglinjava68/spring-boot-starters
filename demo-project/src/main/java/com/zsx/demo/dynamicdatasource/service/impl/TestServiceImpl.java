@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -29,15 +30,15 @@ public class TestServiceImpl implements TestService {
         return testDao.getList();
     }
 
+    private AtomicLong count = new AtomicLong(0);
+
     @Override
     @DS("slave_1")
     public List<Map<String, Object>> hello(String name) {
         System.out.println(("----- selectAll method test ------"));
         List<User> userList = userMapper.selectList(null);
-        userList.forEach(System.out::println);
-        System.out.println("hello:"+name);
-        userService.getList();
-
+//        userList.forEach(System.out::println);
+        System.out.println("当前："+count.incrementAndGet());
         return null;
     }
 

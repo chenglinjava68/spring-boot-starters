@@ -20,11 +20,18 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    @GetMapping("/hello2")
+    @ResponseBody
+    @ApiOperation(value="hello2")
+    public List<Map<String, Object>> hello2(String name){
+        testService.hello2(name);
+        return testService.hello(name);
+    }
+
     @GetMapping("/hello")
     @ResponseBody
     @ApiOperation(value="hello")
     public List<Map<String, Object>> hello(String name){
-        testService.hello2(name);
         return testService.hello(name);
     }
 

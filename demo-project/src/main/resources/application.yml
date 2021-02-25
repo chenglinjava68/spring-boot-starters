@@ -11,69 +11,113 @@ server:
     direct-buffers: true # 是否分配的直接内存
 
 spring:
+  profiles:
+    active: dm
   datasource:
-    dynamic:
-      primary: master #设置默认的数据源或者数据源组,默认值即为master
-      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
-      p6spy: true #开启完整sql打印
-      datasource:
-        master:
-          url: jdbc:mysql://172.16.16.20:5506/demo?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
-          username: demo
-          password: 123456
-          driver-class-name: com.mysql.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
-          p6spy: true # 如果这个库不需要可单独关闭。
-        slave_1:
-          url: jdbc:mysql://172.16.16.20:5506/demo2?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
-          username: demo
-          password: 123456
-          driver-class-name: com.mysql.jdbc.Driver
     druid:
       stat-view-servlet:
         enabled: true
         loginUsername: admin
         loginPassword: 123456
         url-pattern: /druid/* #http://localhost:8888/demo/druid/index.html
-        # 初始化时建立物理连接的个数
-        initial-size: 5
-        # 最大连接池数量
-        max-active: 30
-        # 最小连接池数量
-        min-idle: 5
-        # 获取连接时最大等待时间，单位毫秒
-        max-wait: 60000
-        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-        time-between-eviction-runs-millis: 60000
-        # 连接保持空闲而不被驱逐的最小时间
-        min-evictable-idle-time-millis: 300000
-        # 用来检测连接是否有效的sql，要求是一个查询语句
-        validation-query: select count(*) from dual
-        # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
-        test-while-idle: true
-        # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
-        test-on-borrow: false
-        # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
-        test-on-return: false
-        # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
-        pool-prepared-statements: false
-        # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
-        max-pool-prepared-statement-per-connection-size: 50
-        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计
-        filters: stat,wall
-        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-        connection-properties:
-          druid.stat.mergeSql: true
-          druid.stat.slowSqlMillis: 500
-        # 合并多个DruidDataSource的监控数据
-        use-global-data-source-stat: true
-        filter:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      p6spy: true #开启完整sql打印
+      public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMcOqQyiHutk9aTYf7NAaDI34L+ApmRatEaEHM5ivHtXXcaJEFN7lPu/ipEYKZ3oPQholyiYQ1G5HZ75jXf4XFsCAwEAAQ== #RSA非对称加密公钥
+      datasource:
+        master:
+          #type: com.zaxxer.hikari.HikariDataSource
+          type: com.alibaba.druid.pool.DruidDataSource
+          url: ${datasource.master.url}
+          username: ${datasource.master.username}
+          password: ${datasource.master.password} #密码加密：https://www.cnblogs.com/babycomeon/p/11582303.html
+          driver-class-name: ${datasource.master.driver-class-name} # 3.2.0开始支持SPI可省略此配置
+          p6spy: true # 如果这个库不需要可单独关闭。
+        slave_1:
+          #type: com.zaxxer.hikari.HikariDataSource
+          type: com.alibaba.druid.pool.DruidDataSource
+          url: ${datasource.slave_1.url}
+          username: ${datasource.slave_1.username}
+          password: ${datasource.slave_1.password}
+          driver-class-name: ${datasource.slave_1.driver-class-name}
+      druid:
+          # 初始化时建立物理连接的个数
+          initial-size: 5
+          # 最大连接池数量
+          max-active: 30
+          # 最小连接池数量
+          min-idle: 5
+          # 获取连接时最大等待时间，单位毫秒
+          max-wait: 60000
+          # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+          time-between-eviction-runs-millis: 60000
+          # 连接保持空闲而不被驱逐的最小时间
+          min-evictable-idle-time-millis: 300000
+          # 用来检测连接是否有效的sql，要求是一个查询语句
+          validation-query: select count(*) from dual
+          # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+          test-while-idle: true
+          # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+          test-on-borrow: false
+          # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+          test-on-return: false
+          # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
+          pool-prepared-statements: false
+          # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+          max-pool-prepared-statement-per-connection-size: 50
+          # 配置监控统计拦截的filters，去掉后监控界面sql无法统计
+          filters: stat #,wall
+          # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+          connection-properties:
+            druid.stat.mergeSql: true
+            druid.stat.slowSqlMillis: 500
+          # 合并多个DruidDataSource的监控数据
+          use-global-data-source-stat: true
           stat:
             log-slow-sql: true
             slow-sql-millis: 1000
             merge-sql: true
-          wall:
-            config:
-              multi-statement-allow: true
+#      hikari:  # 全局hikariCP参数，所有值和默认保持一致。(现已支持的参数如下,不清楚含义不要乱设置)
+#        connection-timeout: 30000 #等待来自池的连接的最大毫秒数
+#        validation-timeout: 3000 #连接将被测试活动的最大时间量
+#        idle-timeout: 30000 #连接允许在池中闲置的最长时间 如果idleTimeout+1秒>maxLifetime 且 maxLifetime>0，则会被重置为0（代表永远不会退出）；如果idleTimeout!=0且小于10秒，则会被重置为10秒
+#        max-lifetime: 1800000 #池中连接最长生命周期
+#        max-pool-size: 20 #池中最大连接数，包括闲置和使用中的连接
+#        min-idle: 10 #池中维护的最小空闲连接数
+#        is-read-only: false #从池中获取的连接是否默认处于只读模式
+#        #        leak-detection-threshold:
+#        #        catalog:
+##        initialization-fail-timeout:  #如果池无法成功初始化连接，则此属性控制池是否将 fail fast
+##        connection-init-sql: #该属性设置一个SQL语句，在将每个新连接创建后，将其添加到池中之前执行该语句。
+##        connection-test-query: SELECT 1 #如果您的驱动程序支持JDBC4，我们强烈建议您不要设置此属性
+##        dataSource-class-name:
+##        dataSource-jndi-name:
+##        schema: #该属性为支持模式概念的数据库设置默认模式
+##        transaction-isolation-name: false #是否在其自己的事务中隔离内部池查询，例如连接活动测试 默认false
+##        is-auto-commit: true #自动提交从池中返回的连接 默认true
+##        is-isolate-internal-queries: #是否是隔离内部的语句
+##        is-register-mbeans: #是否注册管理构建工具
+#        is-allow-pool-suspension: #是否允许缓冲池暂停
+#        data-source-properties: #以下属性仅为演示（默认不会引入）
+#          serverTimezone: Asia/Shanghai
+#          characterEncoding: utf-8
+#          useUnicode: true
+#          useSSL: false
+#          autoReconnect: true
+#          cachePrepStmts: true
+#          prepStmtCacheSize: 250
+#          prepStmtCacheSqlLimit: 2048
+#          useServerPrepStmts: true
+#          useLocalSessionState: true
+#          rewriteBatchedStatements: true
+#          cacheResultSetMetadata: true
+#          cacheServerConfiguration: true
+#          elideSetAutoCommits: true
+#          maintainTimeStats: false
+#          allowPublicKeyRetrieval: true
+##        health-check-properties:
+
 #  servlet:
 #    multipart:
 #      # 开启 multipart 上传功能

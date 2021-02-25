@@ -1,5 +1,6 @@
 package com.zsx.demo.dynamicdatasource.model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  * @Created by zhushuxian
  */
 @Data
+@TableName("USER_INFO")
 public class User {
     private Long id;
     private String name;
