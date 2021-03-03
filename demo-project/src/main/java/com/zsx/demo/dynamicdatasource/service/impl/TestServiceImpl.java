@@ -35,16 +35,16 @@ public class TestServiceImpl implements TestService {
     @Override
     @DS("slave_1")
     public List<Map<String, Object>> hello(String name) {
-        System.out.println(("----- selectAll method test ------"));
+        System.out.println(("----- 数据源slave_1 ------"));
         List<User> userList = userMapper.selectList(null);
-//        userList.forEach(System.out::println);
+        userList.forEach(System.out::println);
         System.out.println("当前："+count.incrementAndGet());
         return null;
     }
 
     @Override
     public List<Map<String, Object>> hello2(String name) {
-        System.out.println(("----- selectAll method test ------"));
+        System.out.println(("----- 数据源master ------"));
         List<User> userList = userMapper.selectList(null);
         userList.forEach(System.out::println);
         System.out.println("hello:"+name);

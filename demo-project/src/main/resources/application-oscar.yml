@@ -1,15 +1,15 @@
 datasource:
   master:
-    url: jdbc:dm://127.0.0.1:5237/DEMO
+    url: jdbc:oscar://127.0.0.1:2003/OSRDB
     username: demo
     password: ENC(VSR9iA+2XPYHIqo46M0dIURX3tOr+SeEDShjr8pmjEcUqIbYtVOCvVkD/vZjb+dxabCj0s3/ZExw4ySeLLLYBg==) #密码加密：druid 密码加密：https://www.cnblogs.com/babycomeon/p/11582303.html dynamic密码加密：https://dynamic-datasource.com/guide/advance/Encode.html
-    driver-class-name: dm.jdbc.driver.DmDriver # 3.2.0开始支持SPI可省略此配置
+    driver-class-name: com.oscar.Driver
     p6spy: true # 如果这个库不需要可单独关闭。
   slave_1:
-    url: jdbc:dm://127.0.0.1:5237/DEMO2
-    username: demo
+    url: jdbc:oscar://127.0.0.1:2003/OSRDB
+    username: demo2
     password: ENC(VSR9iA+2XPYHIqo46M0dIURX3tOr+SeEDShjr8pmjEcUqIbYtVOCvVkD/vZjb+dxabCj0s3/ZExw4ySeLLLYBg==)
-    driver-class-name: dm.jdbc.driver.DmDriver
+    driver-class-name: com.oscar.Driver
 
 #  privateKey:MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEAxw6pDKIe62T1pNh/s0BoMjfgv4CmZFq0RoQczmK8e1ddxokQU3uU+7+KkRgpneg9CGiXKJhDUbkdnvmNd/hcWwIDAQABAkAX5Qef75ockar3FdIGd3XKiXCeLFhM9aJsUJGQqMONXpI6Ke1QKQpNS2uqApUAUjRORPhopeF9bZK7YqZs9rXpAiEA5xpDP28SwD1RkYy0qzjKjN7qZb0G7HrDZMigSkP70OUCIQDcgJkB/mXzz0MmbivhfEdJpH0phm/qRduFdNfrD+TkPwIgeWc2hJBZDVwpCYkdMAV5gl9oS2HtzTUAiGVMrzbfhnECIQC/hSbg93DgOoatq4WLnWFh0nAwECfGyRRpr1oXPj/mCwIhAJc43vu80xPz7+m2NaC5wahVtsOvWoXesEnaEgb2niLr
 #  publicKey:MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMcOqQyiHutk9aTYf7NAaDI34L+ApmRatEaEHM5ivHtXXcaJEFN7lPu/ipEYKZ3oPQholyiYQ1G5HZ75jXf4XFsCAwEAAQ==

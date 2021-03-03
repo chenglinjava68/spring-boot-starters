@@ -12,7 +12,7 @@ server:
 
 spring:
   profiles:
-    active: dm
+    active: oscar
   datasource:
     druid:
       stat-view-servlet:
@@ -23,7 +23,7 @@ spring:
     dynamic:
       primary: master #设置默认的数据源或者数据源组,默认值即为master
       strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
-      p6spy: true #开启完整sql打印
+      p6spy: false #开启完整sql打印
       public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMcOqQyiHutk9aTYf7NAaDI34L+ApmRatEaEHM5ivHtXXcaJEFN7lPu/ipEYKZ3oPQholyiYQ1G5HZ75jXf4XFsCAwEAAQ== #RSA非对称加密公钥
       datasource:
         master:

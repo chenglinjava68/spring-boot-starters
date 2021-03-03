@@ -9,7 +9,7 @@ import lombok.Data;
  * @Created by zhushuxian
  */
 @Data
-@TableName("USER_INFO")
+@TableName("user_info")
 public class User {
     private Long id;
     private String name;
