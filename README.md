@@ -78,7 +78,7 @@ spring-boot-starters是一个基于springboot的项目快速集成脚手架
 <dependency>
   <groupId>com.zsx</groupId>
   <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-  <version>${version}</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 2. 配置数据源。
