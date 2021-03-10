@@ -11,8 +11,6 @@ server:
     direct-buffers: true # 是否分配的直接内存
 
 spring:
-  profiles:
-    active: mysql
   datasource:
     druid:
       stat-view-servlet:
@@ -24,23 +22,23 @@ spring:
       primary: master #设置默认的数据源或者数据源组,默认值即为master
       strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
       p6spy: true #开启完整sql打印
-      public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMcOqQyiHutk9aTYf7NAaDI34L+ApmRatEaEHM5ivHtXXcaJEFN7lPu/ipEYKZ3oPQholyiYQ1G5HZ75jXf4XFsCAwEAAQ== #RSA非对称加密公钥
+      #public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMcOqQyiHutk9aTYf7NAaDI34L+ApmRatEaEHM5ivHtXXcaJEFN7lPu/ipEYKZ3oPQholyiYQ1G5HZ75jXf4XFsCAwEAAQ== #RSA非对称加密公钥
       datasource:
         master:
           #type: com.zaxxer.hikari.HikariDataSource
           type: com.alibaba.druid.pool.DruidDataSource
-          url: ${datasource.master.url}
-          username: ${datasource.master.username}
-          password: ${datasource.master.password} #密码加密：https://www.cnblogs.com/babycomeon/p/11582303.html
-          driver-class-name: ${datasource.master.driver-class-name} # 3.2.0开始支持SPI可省略此配置
+          url: jdbc:mysql://172.16.16.20:5506/demo?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
+          username: demo
+          password: 123456 #密码加密：https://www.cnblogs.com/babycomeon/p/11582303.html
+          driver-class-name: com.mysql.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
           p6spy: true # 如果这个库不需要可单独关闭。
         slave_1:
           #type: com.zaxxer.hikari.HikariDataSource
           type: com.alibaba.druid.pool.DruidDataSource
-          url: ${datasource.slave_1.url}
-          username: ${datasource.slave_1.username}
-          password: ${datasource.slave_1.password}
-          driver-class-name: ${datasource.slave_1.driver-class-name}
+          url: jdbc:mysql://172.16.16.20:5506/demo2?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
+          username: demo
+          password: 123456
+          driver-class-name: com.mysql.jdbc.Driver
       druid:
           # 初始化时建立物理连接的个数
           initial-size: 5

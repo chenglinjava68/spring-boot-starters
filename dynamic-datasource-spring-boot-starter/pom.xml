@@ -11,5 +11,71 @@
 
     <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
 
+    <dependencies>
+        <!--动态数据源-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <!--druid数据源-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+        <!-- HikariCP数据源-->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <!--Mysql数据库驱动包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
+         <!--Oracle驱动-->
+        <!--<dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+        </dependency>-->
+        <!--达梦数据库驱动包-->
+        <!--<dependency>
+            <groupId>com.dameng</groupId>
+            <artifactId>Dm8JdbcDriver18</artifactId>
+            <version>8.1.1.126</version>
+        </dependency>-->
+
+        <!--神通数据库-->
+        <!--<dependency>
+            <groupId>com.oscar</groupId>
+            <artifactId>oscarJDBC8</artifactId>
+            <version>4.1.21x20201109143843</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+        <!--SQL日志补全工具-->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+
+        <!--代码生成器-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.4.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

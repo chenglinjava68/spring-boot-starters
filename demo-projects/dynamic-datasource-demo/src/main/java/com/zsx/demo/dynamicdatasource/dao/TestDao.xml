@@ -6,12 +6,12 @@
         <result property = "id" column = "id"/>
         <result property = "name" column = "name"/>
     </resultMap>-->
-    <resultMap id="appbasic" type="java.util.Map">
+    <!--<resultMap id="appbasic" type="java.util.Map">
         <result property="appDesc"  column="APP_DESC" jdbcType="CLOB" javaType = "java.lang.String"  />
         <result property="appUpdateDesc"  column="APP_UPDATE_DESC" jdbcType="CLOB" javaType = "java.lang.String"  />
         <result property="appUrl"  column="APP_URL" jdbcType="CLOB" javaType = "java.lang.String"  />
-    </resultMap>
-    <select id = "getList" resultMap="appbasic" parameterType="java.lang.String"> /*resultMap="appbasic" resultType="Map"*/
-        SELECT * FROM tb_crw_apps_basic
+    </resultMap>-->
+    <select id = "getList"  resultType="java.util.Map"> /*resultMap="appbasic" resultType="Map"*/
+        SELECT * FROM user_info limit 1
     </select>
 </mapper>

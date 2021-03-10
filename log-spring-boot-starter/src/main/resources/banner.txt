@@ -1,12 +1,2 @@
-${AnsiColor.BRIGHT_BLUE}:: open-capacity-platform 🤓 :: Running Spring Boot ${spring-boot.version} ::
-
-  ${AnsiColor.GREEN}   ____    ${AnsiColor.GREEN}   _____   _____  
-  ${AnsiColor.GREEN}  / __ \   ${AnsiColor.GREEN}  / ____| |  __ \ 
-  ${AnsiColor.GREEN} | |  | |  ${AnsiColor.GREEN} | |      | |__) |
-  ${AnsiColor.GREEN} | |  | |  ${AnsiColor.GREEN} | |      |  ___/ 
-  ${AnsiColor.GREEN} | |__| |  ${AnsiColor.GREEN} | |____  | |     
-  ${AnsiColor.GREEN}  \____/   ${AnsiColor.GREEN}  \_____| |_|   
-
-  ${AnsiColor.DEFAULT}项目地址: https://gitee.com/owenwangwen/open-capacity-platform  
-  ${AnsiColor.DEFAULT}开发文档: https://www.kancloud.cn/owenwangwen/open-capacity-platform  
-  ${AnsiColor.DEFAULT}技术博客: https://blog.51cto.com/13005375   
+spring-boot-starters
+一个基于springboot的项目快速集成脚手架
