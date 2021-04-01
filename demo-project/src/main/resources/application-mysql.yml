@@ -1,12 +1,12 @@
 datasource:
   master:
-    url: jdbc:mysql://172.16.16.20:5506/demo?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://xxx.xxx.xxx.xxx:5506/demo?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: demo
     password: ENC(Rz+5doDRe9b0XNWEYf0jEq6ALHZJHkVqYLN5WDWB4j/GXbpIr+UR3hJxtATvnOqZT6vtugo+yViiOlUDatW1HA==) #密码加密：druid 密码加密：https://www.cnblogs.com/babycomeon/p/11582303.html dynamic密码加密：https://dynamic-datasource.com/guide/advance/Encode.html
     driver-class-name: com.mysql.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
     p6spy: true # 如果这个库不需要可单独关闭。
   slave_1:
-    url: jdbc:mysql://172.16.16.20:5506/demo2?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://xxx.xxx.xxx.xxx:5506/demo2?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: demo
     password: ENC(Rz+5doDRe9b0XNWEYf0jEq6ALHZJHkVqYLN5WDWB4j/GXbpIr+UR3hJxtATvnOqZT6vtugo+yViiOlUDatW1HA==)
     driver-class-name: com.mysql.jdbc.Driver

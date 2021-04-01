@@ -1,0 +1,37 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /demo
+  undertow:
+    threads:
+      io: 4 # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程 不要设置过大，如果过大，启动项目会报错：打开文件数过多
+      worker: 32 # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载 默认值是IO线程数*8
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    buffer-size: 1024 # 每块buffer的空间大小,越小的空间被利用越充分
+    direct-buffers: true # 是否分配的直接内存
+
+spring:
+  application:
+    name: cloud-kafka
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer: # producer 生产者
+      retries: 0 # 重试次数
+      acks: 1 # 应答级别:多少个分区副本备份完成时向生产者发送ack确认(可选0、1、all/-1)
+      batch-size: 16384 # 批量大小
+      buffer-memory: 33554432 # 生产端缓冲区大小
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 自定义分区器
+      #spring.kafka.producer.properties.partitioner.class=com.felix.kafka.producer.CustomizePartitioner
+    consumer: # consumer消费者
+      group-id: test-consumer-group # 默认的消费组ID
+      enable-auto-commit: true # 是否自动提交offset
+      auto-commit-interval: 100 # 提交offset延时(接收到消息后多久提交offset)
+      auto-offset-reset: latest
+      # 当kafka中没有初始offset或offset超出范围时将自动重置offset;
+      # earliest:重置为分区中最小的offset;
+      # latest:重置为分区中最新的offset(消费分区中新产生的数据);
+      # none:只要有一个分区不存在已提交的offset,就抛出异常;
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

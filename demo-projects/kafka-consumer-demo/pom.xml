@@ -9,19 +9,23 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dynamic-datasource-demo</artifactId>
+    <artifactId>kafka-consumer-demo</artifactId>
+
 
     <dependencies>
-
         <dependency>
             <groupId>com.zsx</groupId>
             <artifactId>web-spring-boot-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.zsx</groupId>
-            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.5.9</version>
         </dependency>
     </dependencies>
 </project>
