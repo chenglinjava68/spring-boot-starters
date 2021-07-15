@@ -158,3 +158,29 @@ public class UserServiceImpl implements UserService {
 ```
 ---
 
+1. elasticsearch-spring-boot-starter。
+
+```xml
+<dependency>
+  <groupId>com.zsx</groupId>
+  <artifactId>elasticsearch-spring-boot-starter</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+2. 配置数据源。
+```yaml
+elasticsearch:  
+    enable: true
+    host: localhost
+    port: 9200
+    connect-time-out: 5000
+    socket-time-out: 10000
+    connection-request-time-out: 5000
+    max-connect-num: 100
+    max-connect-per-route: 100
+    keep-alive-time: 10000
+    auth:
+        enable: false
+        password: 123456 
+        user-name: admin
+```
