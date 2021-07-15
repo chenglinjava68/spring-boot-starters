@@ -39,6 +39,7 @@ spring-boot-starters是一个基于springboot的项目快速集成脚手架
 | uaa-client-spring-boot-starter | oauth2.0认证中心客户端 |
 | ribbon-spring-boot-starter | ribbon客户端负载均衡 |
 | redis-spring-boot-starter | redis快速集成 |
+| elasticsearch-spring-boot-starter | elasticsearch快速集成 |
 | rabbitmq-spring-boot-starter  | rabbitmq消息中间间快速集成 |
 
 ## 1、动态数据源模块:dynamic-datasource-spring-boot-starter
